@@ -111,14 +111,14 @@ public class IntList {
             return null;
         }
 
-        IntList ptr = res.rest;
+        IntList ptr = res;
         while (A != null) {
-            ptr = new IntList(A.first, null);
+            ptr.rest = new IntList(A.first, null);
             ptr = ptr.rest;
             A = A.rest;
         }
         while (B != null) {
-            ptr = new IntList(B.first, null);
+            ptr.rest = new IntList(B.first, null);
             ptr = ptr.rest;
             B = B.rest;
         }
