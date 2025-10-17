@@ -5,12 +5,18 @@ public class ArithmeticTest {
 
     /** Performs a few arbitrary tests to see if the product method is correct */
 
+    // @Test
+    // public void testMethod() {
+    //     assertEquals(<expected>, <actual>);
+    // }
+
     @Test 
     public void testProduct() {
         /* assertEquals for comparison of ints takes two arguments:
         assertEquals(expected, actual).
         if it is false, then the assertion will be false, and this test will fail.
         */
+        assertTrue(true);
 
         assertEquals(30, Arithmetic.product(5, 6));
         assertEquals(-30, Arithmetic.product(5, -6));
