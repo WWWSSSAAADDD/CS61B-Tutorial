@@ -1,11 +1,9 @@
-import java.util.List;
-
 public class LinkedListDeque<T> {
     /** 用于实现LinkListDeque的嵌套类*/
     private class ListNode<T> {
-        public T item;
-        public ListNode<T> pre;
-        public ListNode<T> next;
+        private T item;
+        private ListNode<T> pre;
+        private ListNode<T> next;
         ListNode() {
             item = null;
             pre = null;

@@ -9,15 +9,15 @@ public class ArrayDeque<T> {
      * */
 
     /** 一些维护的变量*/
-    private int DequeSize = 8;
-    private T[] Deque;
+    private int dequeSize = 8;
+    private T[] deque;
     private int size;
     private int firstPos;
     private int lastPos;
 
     /** 一些方法*/
     public ArrayDeque() {
-        Deque = (T[]) new Object[DequeSize];
+        deque = (T[]) new Object[dequeSize];
         size = 0;
         firstPos = 1;
         lastPos = -1;
@@ -38,34 +38,34 @@ public class ArrayDeque<T> {
         T[] newDeque = (T[]) new Object[newSize];
         int curPos = firstPos;
 
-        for (int i = 0; i < DequeSize; i++) {
-            newDeque[i] = Deque[curPos];
-            curPos = (curPos + 1) % DequeSize;
+        for (int i = 0; i < dequeSize; i++) {
+            newDeque[i] = deque[curPos];
+            curPos = (curPos + 1) % dequeSize;
         }
 
-        for (int i = 0; i < DequeSize; i++) {
-            Deque[i] = null;
+        for (int i = 0; i < dequeSize; i++) {
+            deque[i] = null;
         }
 
         firstPos = 0;
-        lastPos = DequeSize - 1;
-        DequeSize = newSize;
-        Deque = newDeque;
+        lastPos = dequeSize - 1;
+        dequeSize = newSize;
+        deque = newDeque;
     }
 
     /** 向Deque的开头添加元素*/
     public void addFirst(T item) {
         if (isEmpty()) {
-            Deque[0] = item;
+            deque[0] = item;
             firstPos = 0;
             lastPos = 0;
         } else {
-            if (size() == DequeSize) {
-                resize(DequeSize * 2);
+            if (size() == dequeSize) {
+                resize(dequeSize * 2);
             }
-            firstPos = (firstPos - 1 + DequeSize) % DequeSize;
+            firstPos = (firstPos - 1 + dequeSize) % dequeSize;
 
-            Deque[firstPos] = item;
+            deque[firstPos] = item;
         }
         size += 1;
     }
@@ -73,16 +73,16 @@ public class ArrayDeque<T> {
     /** 向Deque的末尾添加元素*/
     public void addLast(T item) {
         if (isEmpty()) {
-            Deque[0] = item;
+            deque[0] = item;
             firstPos = 0;
             lastPos = 0;
         } else {
-            if (size() == DequeSize) {
-                resize(DequeSize * 2);
+            if (size() == dequeSize) {
+                resize(dequeSize * 2);
             }
-            lastPos = (lastPos + 1) % DequeSize;
+            lastPos = (lastPos + 1) % dequeSize;
 
-            Deque[lastPos] = item;
+            deque[lastPos] = item;
         }
         size += 1;
     }
@@ -92,14 +92,14 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         } else {
-            T returnVal = Deque[firstPos];
-            Deque[firstPos] = null;
+            T returnVal = deque[firstPos];
+            deque[firstPos] = null;
 
             if (size() == 1) {
                 firstPos = 1;
                 lastPos = -1;
             } else {
-                firstPos = (DequeSize + firstPos + 1) % DequeSize;
+                firstPos = (dequeSize + firstPos + 1) % dequeSize;
             }
             size -= 1;
             return returnVal;
@@ -111,14 +111,14 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         } else {
-            T returnVal = Deque[lastPos];
-            Deque[lastPos] = null;
+            T returnVal = deque[lastPos];
+            deque[lastPos] = null;
 
             if (size() == 1) {
                 firstPos = 1;
                 lastPos = -1;
             } else {
-                lastPos = (DequeSize + lastPos - 1) % DequeSize;
+                lastPos = (dequeSize + lastPos - 1) % dequeSize;
             }
 
             size -= 1;
@@ -133,9 +133,9 @@ public class ArrayDeque<T> {
         } else {
             int curPos = firstPos;
             for (int i = 0; i < index; i++) {
-                curPos = (curPos + 1) % DequeSize;
+                curPos = (curPos + 1) % dequeSize;
             }
-            return Deque[curPos];
+            return deque[curPos];
         }
     }
 
@@ -144,11 +144,11 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return;
         } else {
-            System.out.print(Deque[firstPos]);
+            System.out.print(deque[firstPos]);
             int curPos = firstPos;
             for (int i = 1; i < size(); i++) {
-                curPos = (curPos + 1) % DequeSize;
-                System.out.print(" " + Deque[curPos]);
+                curPos = (curPos + 1) % dequeSize;
+                System.out.print(" " + deque[curPos]);
             }
 
         }
