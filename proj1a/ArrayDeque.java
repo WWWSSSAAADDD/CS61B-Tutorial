@@ -102,6 +102,11 @@ public class ArrayDeque<T> {
                 firstPos = (dequeSize + firstPos + 1) % dequeSize;
             }
             size -= 1;
+
+            if (size() < dequeSize / 4) {
+                resize(dequeSize / 2);
+            }
+
             return returnVal;
         }
     }
@@ -122,6 +127,11 @@ public class ArrayDeque<T> {
             }
 
             size -= 1;
+
+            if (size() < dequeSize / 4) {
+                resize(dequeSize / 2);
+            }
+
             return returnVal;
         }
     }
