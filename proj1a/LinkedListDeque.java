@@ -48,6 +48,7 @@ public class LinkedListDeque<T> {
             sentinel.pre = newNode;
         } else {
             ListNode<T> newNode = new ListNode<>(item, sentinel, sentinel.next);
+            sentinel.next.pre = newNode;
             sentinel.next = newNode;
         }
         size += 1;
