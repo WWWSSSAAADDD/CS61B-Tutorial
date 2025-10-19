@@ -1,5 +1,3 @@
-import java.util.Deque;
-
 public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
         Deque<Character> returnDeque = new LinkedListDeque<>();
@@ -10,7 +8,7 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word) {
-        Deque d = wordToDeque(word);
+        Deque<Character> d = wordToDeque(word);
 
         if (d.size() <= 1) {
             return true;
