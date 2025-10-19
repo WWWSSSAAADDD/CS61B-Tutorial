@@ -11,23 +11,21 @@ public class ArrayDeque<T> {
     /** 一些维护的变量*/
     private int DequeSize = 8;
     private T[] Deque;
+    private int size;
     private int firstPos;
     private int lastPos;
 
     /** 一些方法*/
     public ArrayDeque() {
         Deque = (T[]) new Object[DequeSize];
-        firstPos = -1;
+        size = 0;
+        firstPos = 1;
         lastPos = -1;
     }
 
     /** 返回Deque的size*/
     public int size() {
-        if (firstPos == -1 && lastPos == -1) {
-            return 0;
-        } else {
-            return (DequeSize - firstPos) % DequeSize + lastPos + 1;
-        }
+        return size;
     }
 
     /** 返回Deque是否为空*/
@@ -63,11 +61,9 @@ public class ArrayDeque<T> {
             }
             firstPos = (firstPos - 1 + DequeSize) % DequeSize;
 
-            //待添加：判断是否满了
-
             Deque[firstPos] = item;
         }
-
+        size += 1;
     }
 
     /** 向Deque的末尾添加元素*/
@@ -82,10 +78,9 @@ public class ArrayDeque<T> {
             }
             lastPos = (lastPos + 1) % DequeSize;
 
-            //判断是否满了
-
             Deque[lastPos] = item;
         }
+        size += 1;
     }
 
     /** 去除第一个元素，并且返回该元素值*/
@@ -94,7 +89,14 @@ public class ArrayDeque<T> {
             return null;
         } else {
             T returnVal = Deque[firstPos];
-            firstPos = (DequeSize + firstPos + 1) % DequeSize;
+
+            if (size() == 1) {
+                firstPos = 1;
+                lastPos = -1;
+            } else {
+                firstPos = (DequeSize + firstPos + 1) % DequeSize;
+            }
+            size -= 1;
             return returnVal;
         }
     }
@@ -105,7 +107,15 @@ public class ArrayDeque<T> {
             return null;
         } else {
             T returnVal = Deque[lastPos];
-            lastPos = (DequeSize + lastPos - 1) % DequeSize;
+
+            if (size() == 1) {
+                firstPos = 1;
+                lastPos = -1;
+            } else {
+                lastPos = (DequeSize + lastPos - 1) % DequeSize;
+            }
+
+            size -= 1;
             return returnVal;
         }
     }
