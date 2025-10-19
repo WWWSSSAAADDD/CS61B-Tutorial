@@ -89,6 +89,7 @@ public class ArrayDeque<T> {
             return null;
         } else {
             T returnVal = Deque[firstPos];
+            Deque[firstPos] = null;
 
             if (size() == 1) {
                 firstPos = 1;
@@ -107,6 +108,7 @@ public class ArrayDeque<T> {
             return null;
         } else {
             T returnVal = Deque[lastPos];
+            Deque[lastPos] = null;
 
             if (size() == 1) {
                 firstPos = 1;
