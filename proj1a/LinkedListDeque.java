@@ -75,7 +75,7 @@ public class LinkedListDeque<T> {
 
             T returnVal = sentinel.next.item;
 
-            remove(sentinel.next);
+    //      remove(sentinel.next);
 
             sentinel.next = nextNode;
 
@@ -84,11 +84,11 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** 将某一节点的作用效果移除*/
-    private void remove(ListNode<T> toBeRemoved) {
-        toBeRemoved.next = null;
-        toBeRemoved.pre = null;
-    }
+//    /** 将某一节点的作用效果移除*/
+//    private void remove(ListNode<T> toBeRemoved) {
+//        toBeRemoved.next = null;
+//        toBeRemoved.pre = null;
+//    }
 
     /** 从双端队列中将最后一个节点移除，并且返回该节点的元素*/
     public T removeLast() {
@@ -99,7 +99,7 @@ public class LinkedListDeque<T> {
             newLastNode.next = sentinel;
 
             T returnVal = sentinel.pre.item;
-            remove(sentinel.pre);
+            //remove(sentinel.pre);
 
             sentinel.pre = newLastNode;
             size -= 1;
