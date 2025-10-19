@@ -61,8 +61,8 @@ public class LinkedListDeque<T> {
             ListNode<T> newNode = new ListNode<>(item, sentinel.pre, sentinel);
             sentinel.pre.next = newNode;
             sentinel.pre = newNode;
+            size += 1;
         }
-        size += 1;
     }
 
     /** 从双端队列中将第一个节点移除，并且返回该节点的元素*/
@@ -88,7 +88,6 @@ public class LinkedListDeque<T> {
     private void remove(ListNode<T> toBeRemoved) {
         toBeRemoved.next = null;
         toBeRemoved.pre = null;
-        toBeRemoved.item = null;
     }
 
     /** 从双端队列中将最后一个节点移除，并且返回该节点的元素*/
