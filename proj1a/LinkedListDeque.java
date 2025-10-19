@@ -1,4 +1,4 @@
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T>{
     /** 用于实现LinkListDeque的嵌套类*/
     private class ListNode<T> {
         private T item;
