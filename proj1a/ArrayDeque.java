@@ -43,6 +43,10 @@ public class ArrayDeque<T> {
             curPos = (curPos + 1) % DequeSize;
         }
 
+        for (int i = 0; i < DequeSize; i++) {
+            Deque[i] = null;
+        }
+
         firstPos = 0;
         lastPos = DequeSize - 1;
         DequeSize = newSize;
