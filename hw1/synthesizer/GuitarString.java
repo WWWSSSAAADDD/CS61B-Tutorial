@@ -36,12 +36,20 @@ public class GuitarString {
      * the Karplus-Strong algorithm. 
      */
     public void tic() {
-        double dequeItem = buffer.dequeue();
-        buffer.enqueue((dequeItem + buffer.peek()) / 2 * DECAY);
+        if (buffer.fillCount() >= 2) {
+            double dequeItem = buffer.dequeue();
+            buffer.enqueue((dequeItem + buffer.peek()) / 2 * DECAY);
+        } else {
+            throw new RuntimeException("Buffer underflow");
+        }
     }
 
     /* Return the double at the front of the buffer. */
     public double sample() {
-        return buffer.peek();
+        if (!buffer.isEmpty()) {
+            return buffer.peek();
+        } else {
+            throw new RuntimeException("Buffer underflow");
+        }
     }
 }
