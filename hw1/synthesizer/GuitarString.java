@@ -39,8 +39,6 @@ public class GuitarString {
         if (buffer.fillCount() >= 2) {
             double dequeItem = buffer.dequeue();
             buffer.enqueue((dequeItem + buffer.peek()) / 2 * DECAY);
-        } else {
-            throw new RuntimeException("Buffer underflow");
         }
     }
 
@@ -49,7 +47,7 @@ public class GuitarString {
         if (!buffer.isEmpty()) {
             return buffer.peek();
         } else {
-            throw new RuntimeException("Buffer underflow");
+            return 0.0;
         }
     }
 }
