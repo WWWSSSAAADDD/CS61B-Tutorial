@@ -49,6 +49,7 @@ public class MergeSort {
      * @param   q2  A Queue in sorted order from least to greatest.
      * @return      A Queue containing all of the q1 and q2 in sorted order, from least to
      *              greatest.
+     *              
      *
      */
     private static <Item extends Comparable> Queue<Item> mergeSortedQueues(
